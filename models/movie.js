@@ -18,7 +18,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   description: {
-    type: Number,
+    type: String,
     required: true,
   },
   image: {
@@ -26,7 +26,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => {
-        const regExp = /^(https?:\/\/)?([\da-z\\.-]+)\.([a-z\\.]{2,6})([\\/\w\\.-]*)*\/?$/g;
+        const regExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w\W.-]*)#?$/g;
         return regExp.test(v);
       },
       message: (props) => `${props.value} is not matched URL format!`,
@@ -37,7 +37,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => {
-        const regExp = /^(https?:\/\/)?([\da-z\\.-]+)\.([a-z\\.]{2,6})([\\/\w\\.-]*)*\/?$/g;
+        const regExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w\W.-]*)#?$/g;
         return regExp.test(v);
       },
       message: (props) => `${props.value} is not matched URL format!`,
@@ -48,7 +48,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => {
-        const regExp = /^(https?:\/\/)?([\da-z\\.-]+)\.([a-z\\.]{2,6})([\\/\w\\.-]*)*\/?$/g;
+        const regExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w\W.-]*)#?$/g;
         return regExp.test(v);
       },
       message: (props) => `${props.value} is not matched URL format!`,
@@ -65,6 +65,10 @@ const movieSchema = new mongoose.Schema({
   },
   nameEN: {
     type: String,
+    required: true,
+  },
+  movieId: {
+    type: Number,
     required: true,
   },
 });
